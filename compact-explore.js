@@ -1,0 +1,7 @@
+/* Keep view choices reachable while letting agents fold the controls away. */
+const exploreDisclosure=document.createElement('details');exploreDisclosure.id='exploreSettings';exploreDisclosure.className='explore-settings';exploreDisclosure.open=true;
+const exploreSummary=document.createElement('summary');exploreSummary.textContent='Explore settings';const exploreBody=document.createElement('div');exploreBody.className='explore-settings-body';exploreControls.before(exploreDisclosure);exploreDisclosure.append(exploreSummary,exploreBody);exploreBody.append(exploreControls,$('threeTools'));
+const sunDisclosure=document.createElement('details');sunDisclosure.className='sun-settings';sunDisclosure.open=true;const sunSummary=document.createElement('summary');sunSummary.textContent='Sunlight · date and time';sunDockTitle.replaceWith(sunDisclosure);const sunBody=document.createElement('div');sunDisclosure.append(sunSummary,sunBody);
+const compactSunControls=placeSunlightControls;placeSunlightControls=function(){compactSunControls();if(step===5&&mode==='sun'){sunSummary.textContent='Sunlight · '+floor().name+' · date and time';sunBody.append($('analysisControls'))}};
+const compactExploreRender=render;render=function(){compactExploreRender();exploreDisclosure.hidden=step!==5;exploreSummary.textContent='Explore settings · '+(exploreView==='3d'?'3D':'2D')+' · '+({sun:'Sunlight',feng:'Feng Shui',vastu:'Vastu'}[mode]);};
+render();

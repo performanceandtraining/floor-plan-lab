@@ -1,0 +1,11 @@
+/* Delay a placement until release, so dragging never adds accidental geometry. */
+(function(root){
+ function attach(surface,config){let gesture=null;const eventCopy=(e,target=e.target)=>({button:e.button||0,clientX:e.clientX,clientY:e.clientY,pointerId:e.pointerId,ctrlKey:!!e.ctrlKey,shiftKey:!!e.shiftKey,altKey:!!e.altKey,metaKey:!!e.metaKey,pointerType:e.pointerType,target,preventDefault:()=>e.preventDefault?.()});
+  function down(e){if(e.button!==0)return;if(gesture){if(gesture.id!==e.pointerId){if(gesture.edit)config.cancelEdit?.();gesture=null}return}e.preventDefault?.();const edit=!!config.editable(e);gesture={id:e.pointerId,start:eventCopy(e),x:e.clientX,y:e.clientY,edit,moved:false,view:config.getView()};surface.setPointerCapture?.(e.pointerId);if(edit)config.down(e)}
+  function move(e){if(!gesture){config.hover?.(e);return}if(e.pointerId!==gesture.id)return;if(gesture.edit){config.move(e);return}const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;if(Math.hypot(dx,dy)>(e.pointerType==='touch'?9:5))gesture.moved=true;if(gesture.moved){surface.classList?.add('dragging-plan');config.pan(dx,dy,gesture.view)}}
+  function end(e){if(!gesture||e.pointerId!==gesture.id)return;const g=gesture;gesture=null;surface.classList?.remove('dragging-plan');if(g.edit)config.end(e);else{const dx=e.clientX-g.x,dy=e.clientY-g.y;if(!g.moved&&Math.hypot(dx,dy)>(e.pointerType==='touch'?9:5)){g.moved=true;config.pan(dx,dy,g.view)}if(!g.moved)config.down(g.start)}if(surface.hasPointerCapture?.(e.pointerId))surface.releasePointerCapture(e.pointerId)}
+  function cancel(e){if(!gesture||e.pointerId!==gesture.id)return;if(gesture.edit)config.cancelEdit?.();gesture=null;surface.classList?.remove('dragging-plan')}
+  surface.addEventListener('pointerdown',down);surface.addEventListener('pointermove',move);surface.addEventListener('pointerup',end);surface.addEventListener('pointercancel',cancel);return{cancel:()=>{if(gesture)cancel({pointerId:gesture.id})},discard:()=>{gesture=null;surface.classList?.remove('dragging-plan')}};
+ }
+ const api={attach};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.PlanGestures=api;
+})(typeof globalThis!=='undefined'?globalThis:this);

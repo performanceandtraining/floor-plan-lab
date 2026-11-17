@@ -1,0 +1,26 @@
+.mobile-jump{display:none}
+@media(max-width:700px){
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+.top{height:auto;min-height:100px;display:block;padding:18px 20px 14px}
+.brand{font-size:15px;letter-spacing:2.5px;line-height:1.4}
+.brand small{font-size:8px;letter-spacing:2px;line-height:1.5}
+.topright{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topright button{min-height:42px;font-size:12px;white-space:nowrap;padding:10px 14px}
+.intro{padding:23px 20px 20px}.intro h1{font-size:28px;line-height:1.25;margin:8px 0 10px}.intro p{font-size:13px;line-height:1.7;max-width:310px}
+.layout{gap:18px;padding:0 14px 24px}.setup{display:contents!important}
+.setup .step{background:white;border:1px solid var(--line);border-radius:11px;padding:20px;width:100%;grid-column:auto}
+.step:nth-child(1){order:0}.workspace{order:1}.step:nth-child(2){order:2}.results{order:3}.step:nth-child(3){order:4}
+.step h3{font-size:14px;gap:10px;margin-bottom:15px}.num{width:27px;height:27px;flex-shrink:0}
+.step .small{font-size:12px;line-height:1.7}.step label{font-size:12px;margin:14px 0 7px}
+.step input:not([type=range]):not([type=file]),.step select{font-size:16px;min-height:46px;padding:10px 12px}
+.step button{min-height:44px}.step .tools{gap:10px;margin-top:16px}.step .tools button{min-height:49px;font-size:13px;white-space:nowrap}
+input[type=range]{min-height:30px}#count{margin:13px 0 0}
+.workspacehead{padding:17px 15px;display:block}.workspacehead input{font-size:13px;line-height:1.7}.tag{display:block;font-size:10px;margin-top:6px}
+.tabs{padding:8px;gap:4px}.tabs button{min-height:44px;font-size:12px;padding:8px 4px;white-space:nowrap}
+.hint{padding:13px 15px;line-height:1.7;font-size:12px}
+.mobile-jump{display:flex;gap:10px;padding:11px 15px;background:#f6f9fa;border-bottom:1px solid var(--line)}
+.mobile-jump a{color:#246fa8;font-size:11px;text-decoration:none;border-bottom:1px dotted #7baacb;padding:4px 0}
+.canvaswrap svg{aspect-ratio:1.2;min-height:280px}.canvasfoot{padding:12px;align-items:flex-start;gap:8px}.legend{font-size:9px;gap:6px;flex-direction:column}.canvasfoot button{min-height:38px;min-width:35px;padding:6px 9px}
+.righttitle{padding:20px 20px 0}.righttitle h2{font-size:20px;line-height:1.5}.results .pad{padding:0 20px 20px!important}.results select,.results input[type=date]{min-height:46px;font-size:16px}.results button{min-height:44px}.results .row{flex-wrap:wrap}.metrics{gap:12px}.metrics>div{padding:14px 10px}.result{padding:15px 0}.result strong{font-size:13px}.result p{font-size:12px;line-height:1.7}.note{font-size:12px;line-height:1.7;padding:13px}.roomlist{max-height:none;margin-top:14px}.roomitem{min-height:47px;gap:10px}.roomitem button:first-child{text-align:left;font-size:12px}.roomitem button:last-child{min-width:40px;font-size:18px}.footer{padding:0 20px 24px;font-size:10px;line-height:1.8}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
